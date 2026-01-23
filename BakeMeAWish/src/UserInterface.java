@@ -31,12 +31,10 @@ public class UserInterface{
 	   else {
 		   System.out.println("Cake Orders above the specified cost");
 		   
-		   for(Map.Entry<String, Double> s: m.entrySet()) {
-			   System.out.println("Order ID: "+s.getKey());
-			   System.out.println("Cake Cost: "+s.getValue());
-		   }
+		   m.entrySet()
+		   .stream()
+		   .filter(s -> s.getValue() > cost)
+		   .forEach( e -> System.out.println("Order ID: " + e.getKey() + ", Cake Cost: " + e.getValue()));
 	   }
-	   
-	   
 	}
 }
