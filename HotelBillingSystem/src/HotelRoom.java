@@ -36,10 +36,14 @@ public class HotelRoom implements Room {
 	}
 
         // Override the calculateTotalBill() method
-	public double calculateTotalBill(int nightsStayed, int joiningYear) {
-		double bill = nightsStayed * ratePerNight;
-		if(calculateMembershipYear(joiningYear)>3) bill = (bill*0.10) + bill;
-		return (int) bill;
-	}
+	@Override
+	 public double calculateTotalBill(int nightsStayed, int joiningYear) {
+        double total = nightsStayed * ratePerNight;
+        int membershipYears = calculateMembershipYears(joiningYear);
+        if (membershipYears > 3) {
+            total = total * 0.9;
+        }
+        return Math.round(total);
+    }
 	
 }
