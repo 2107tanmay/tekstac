@@ -55,5 +55,24 @@ public class OnlineTest implements Exam {
 	}
 
 	// Override the calculateScore method
+	@Override 
+	public double calculateScore() {
+		double total = 0;
+		double percentage = 0;
+		if(questionType.equals("MCQ")) {
+			total = (correctAnswers*2)-(wrongAnswers*(2*0.10));
+			percentage = (total/(totalQuestions*2))*100;
+			return percentage;
+		}
+		else if(questionType.equals("Coding")) {
+			total = (correctAnswers*5)-(wrongAnswers*(5*0.10));
+			percentage = (total/(totalQuestions*5))*100;
+			return percentage;
+		}
+		else {
+			System.out.println("invalid question type");
+		}
+		return -1;
+	}
 	
 }
